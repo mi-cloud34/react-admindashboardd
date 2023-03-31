@@ -4,7 +4,7 @@ function Dashboard(){
     return (
        <Box m="20px">
   <Box>
-   
+   Dashboard
   </Box>
        </Box>
     );

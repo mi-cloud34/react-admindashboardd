@@ -1,7 +1,9 @@
-import { useState } from "react";
-import {Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { useEffect, useState, } from "react";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
+//import "react-pro-sidebar/dist/css/styles.css";
+import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -14,11 +16,19 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { tokens } from "../../theme";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigate=useNavigate()
+ /*  useEffect(() => {
+    if (to) {
+      navigate(to);
+    } 
+    //else {
+    //  navigate("/index");
+    //}
+  }, [to, navigate]); */
   return (
     <MenuItem
       active={selected === title}
@@ -29,7 +39,8 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       icon={icon}
     >
       <Typography>{title}</Typography>
-      <Link to={to} />
+     {  navigate(to={to}) }
+    {/*   <Link to={to}/> */}
     </MenuItem>
   );
 };
